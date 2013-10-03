@@ -15,21 +15,17 @@ void __attribute__((no_instrument_function)) __cyg_profile_func_exit(void *this_
 void __cyg_profile_func_enter(void *this_fn, void *call_site)
 {
     levels[total++] = ++depth;
+		printf("%d\n", depth);
 }
 
 void __cyg_profile_func_exit(void *this_fn, void *call_site)
 {
     levels[total++] = --depth;
+		printf("%d\n", depth);
 
     /* print the results as we exit main... */
     if (depth == 0) {
-        int i;
-
         printf("Total enters/exits: %d\n", total);
         printf("Total function calls: %d\n", total / 2);
-        printf("Stack depth level trace:\n");
-        for (i = 0; i < total; i++) {
-            printf("%d\n", levels[i]);
-        }
     }
 }

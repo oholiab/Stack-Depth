@@ -5,6 +5,12 @@ CFLAGS=-Wall -g -finstrument-functions
 
 all: prog
 
+test: test.o instrumenter.o
+	$(CC) $(CFLAGS) -o test test.o instrumenter.o
+
+test.o: test.c
+	$(CC) $(CFLAGS) -c -o test.o test.c
+
 prog: prog.o instrumenter.o
 	$(CC) $(CFLAGS) -o prog prog.o instrumenter.o
 
