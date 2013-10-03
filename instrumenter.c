@@ -14,13 +14,25 @@ void __attribute__((no_instrument_function)) __cyg_profile_func_exit(void *this_
 
 void __cyg_profile_func_enter(void *this_fn, void *call_site)
 {
+    int i;
     levels[total++] = ++depth;
+		i = depth;
+		while(i > 0){
+			printf(" ");
+			i--;
+		}
 		printf("%d\n", depth);
 }
 
 void __cyg_profile_func_exit(void *this_fn, void *call_site)
 {
+	  int i;
     levels[total++] = --depth;
+		i = depth;
+		while(i > 0){
+			printf(" ");
+			i--;
+		}
 		printf("%d\n", depth);
 
     /* print the results as we exit main... */
